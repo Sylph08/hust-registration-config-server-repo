@@ -11,7 +11,7 @@
 # end
 
 build:
-  version: 1.0d
+  version: 1.1d
 
 classservice:
   # {cipher} giup config server nhan biet rang day la 1 encrypted value va tien hanh decrypt no de gui gia tri cho class-service
