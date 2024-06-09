@@ -1,0 +1,11 @@
+build:
+  version: 1.0p
+
+classservice:
+  message: This is Hust class service on PRD
+  contactInfos:
+    name: Trong
+    studentCode: 20222052M
+  description:
+    - Class serives
+    - 2024
