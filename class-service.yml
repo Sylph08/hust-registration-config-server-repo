@@ -1,0 +1,23 @@
+#server.port=8091
+#spring.datasource.url=jdbc:postgresql://localhost:5432/hust_class_mngt
+#spring.datasource.username=postgres
+#spring.datasource.password=admin
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=update
+
+# eureka client
+# spring.application.name=CLASS-SERVICE
+#eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
+# end
+
+build:
+  version: 1.0d
+
+classservice:
+  message: This is Hust class service
+  contactInfos:
+    name: Trong
+    studentCode: 20222052M
+  description:
+    - Class serives
+    - 2024
