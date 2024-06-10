@@ -4,7 +4,7 @@ build:
 classservice:
   message: This is Hust class service on PRD
   contactInfos:
-    name: TrongVX
+    name: TrongVX123
     studentCode: 20222052M
   description:
     - Class serives
