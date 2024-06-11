@@ -29,7 +29,7 @@ app:
     subject-service: http://localhost:9000/subject-service/hust/subjects  
 
 app-configs:
-  version: 1.5
+  version: 1.6
 
 # spring.datasource.url=jdbc:postgresql://localhost:5432/hust_course_mngt
 # spring.datasource.username=postgres
