@@ -29,7 +29,7 @@ app:
     subject-service: http://localhost:9000/subject-service/hust/subjects  
 
 build:
-  version: 1.4
+  version: 1.5
 
 classservice:
   # {cipher} giup config server nhan biet rang day la 1 encrypted value va tien hanh decrypt no de gui gia tri cho class-service
