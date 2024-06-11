@@ -1,7 +1,7 @@
 build:
   version: 1.0p
 
-classservice:
+app-configs:
   message: This is Hust class service on PRD
   contactInfos:
     name: TrongVX123
