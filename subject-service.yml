@@ -20,7 +20,7 @@ management:
         include: "*"
 
 app-configs:
-  version: 2.0   
+  version: 2.1   
 
 # eureka client
 # eureka:
