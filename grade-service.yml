@@ -26,6 +26,10 @@ app:
     class-service: http://localhost:9000/class-service/hust/classes
     subject-service: http://localhost:9000/subject-service/hust/subjects
 
+app-configs:
+  version: 1.7
+
+
 # eureka client
 # eureka:
 #   instance:
