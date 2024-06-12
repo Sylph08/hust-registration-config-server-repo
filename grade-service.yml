@@ -27,7 +27,7 @@ app:
     subject-service: http://localhost:9000/subject-service/hust/subjects
 
 app-configs:
-  version: 1.7
+  version: 1.8
 
 
 # eureka client
