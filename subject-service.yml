@@ -13,6 +13,15 @@ spring:
     hibernate:
       ddl-auto: update
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+app-configs:
+  version: 2.0   
+
 # eureka client
 # eureka:
 #   instance:
