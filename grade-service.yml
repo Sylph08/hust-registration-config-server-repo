@@ -13,6 +13,19 @@ spring:
     hibernate:
       ddl-auto: update
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      
+app:
+  services:
+    course-service: http://localhost:9000/course-service/hust/courses
+    registration-service: http://localhost:9000/registration-service/hust/registrations
+    class-service: http://localhost:9000/class-service/hust/classes
+    subject-service: http://localhost:9000/subject-service/hust/subjects
+
 # eureka client
 # eureka:
 #   instance:
