@@ -13,6 +13,12 @@ spring:
     hibernate:
       ddl-auto: update
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
 app:
   services:
     class-service: http://localhost:9000/class-service/hust/classes
