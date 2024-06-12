@@ -13,6 +13,13 @@ spring:
     hibernate:
       ddl-auto: update
 
+app:
+  services:
+    class-service: http://localhost:9000/class-service/hust/classes
+
+app-configs:
+  version: 1.9   
+  
 # eureka client
 # eureka:
 #   instance:
