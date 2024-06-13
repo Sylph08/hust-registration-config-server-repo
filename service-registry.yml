@@ -1,1 +1,13 @@
+server:
+  port: 8761
 
+eureka:
+  instance:
+    # telling to Eureka server what host name is
+    hostname: localhost
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+    serviceUrl:
+      # define URL where the Eureka server is going to expose its functionality and other services can try to connect to
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
