@@ -6,6 +6,7 @@ eureka:
     # telling to Eureka server what host name is
     hostname: localhost
   client:
+    #disable eureka server as eureka client
     fetchRegistry: false
     registerWithEureka: false
     serviceUrl:
