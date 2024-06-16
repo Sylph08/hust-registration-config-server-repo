@@ -15,29 +15,34 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
+    show-sql: true
+    # hibernate:
+    #   ddl-auto: update
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
 
-app:
-  services:
-    subject-service: http://localhost:9000/subject-service/hust/subjects  
+endpoints:
+  shutdown:
+    enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serverUrl:
+      defaultZone: http://localhost:8761/eureka/    
 
 app-configs:
   version: 1.7
-
-# spring.datasource.url=jdbc:postgresql://localhost:5432/hust_course_mngt
-# spring.datasource.username=postgres
-# spring.datasource.password=admin
-
-# spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-# spring.jpa.hibernate.ddl-auto=update
-
-# eureka client
-# eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
-# end
