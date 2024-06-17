@@ -5,7 +5,7 @@ app-configs:
   # {cipher} giup config server nhan biet rang day la 1 encrypted value va tien hanh decrypt no de gui gia tri cho class-service
   message: "{cipher}1c50c596a9016b28714d2e2c1eea2afa1ae29a80385c85e1baefe2bfa6000657b5cf530a8cc1b67bdb9e6c61261363c8"
   contactInfos:
-    name: "TrongOK"
+    name: "ABC"
     studentCode: 1234
   description:
     - Class serives
