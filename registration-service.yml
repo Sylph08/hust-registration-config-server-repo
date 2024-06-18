@@ -39,6 +39,12 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/         
 
+logging:
+  level:
+    com:
+      hust:
+        registrationservice: DEBUG
+
 app-configs:
   version: 1.9      
 
