@@ -7,6 +7,15 @@ spring:
     port: 5672
     username: "guest"
     password: "guest"
+  cloud:
+    # config routes automatically by connect with the discovery server (Eureka server)
+    gateway:
+      discovery:
+        locator:
+          # disable default routing
+          enabled: false
+          # enable lower case
+          lowerCaseServiceId: true
 
 management:
   endpoints:
@@ -30,8 +39,16 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
+# enable the debugging logging for package com.hust.apigateway, we need to enable to see the log of "logger.debug()"
+logging:
+  level:
+    com:
+      hust:
+        apigateway: DEBUG
+
 info:
   app:
     name: "api-gateway"
     description: "Hust API Gateway"
-    version: "1.0.0"      
+    version: "1.0.0" 
+    
