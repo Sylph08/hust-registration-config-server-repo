@@ -18,8 +18,8 @@ spring:
           lowerCaseServiceId: true
       # apply global
       httpclient:
-        connect-timeout: 5000
-        response-timeout: 5s
+        connect-timeout: 2000
+        response-timeout: 7s
 
 management:
   endpoints:
