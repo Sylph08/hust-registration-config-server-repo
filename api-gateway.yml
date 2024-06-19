@@ -16,10 +16,6 @@ spring:
           enabled: false
           # enable lower case
           lowerCaseServiceId: true
-      # apply global
-      httpclient:
-        connect-timeout: 2000
-        response-timeout: 7s
 
 management:
   endpoints:
