@@ -38,6 +38,10 @@ management:
   info:
     env:
       enabled: true
+  metrics:
+    # group metric by name
+    tags:
+      application: ${spring.application.name}      
 
 endpoints:
   shutdown:
