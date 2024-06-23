@@ -12,3 +12,24 @@ eureka:
     serviceUrl:
       # define URL where the Eureka server is going to expose its functionality and other services can try to connect to
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # enable liveless and readiness in /actuator/health endpoint to use in docker-compose file
+  health:
+    # /actuator/health/readiness
+    readiness-state:
+      enabled: true
+    # /actuator/health/liveness
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  metrics:
+    # group metric by name
+    tags:
+      application: ${spring.application.name}
