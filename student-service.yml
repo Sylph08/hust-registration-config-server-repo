@@ -2,6 +2,11 @@ server:
   port: 8095
 
 spring:
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
   datasource:
     url: jdbc:postgresql://localhost:5432/hust_student_mngt
     username: postgres
