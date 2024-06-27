@@ -61,11 +61,3 @@ logging:
       
 app-configs:
   version: 1.8
-
-# eureka client
-# eureka:
-#   instance:
-#     client:
-#       serverUrl:
-#         defaultZone: http://localhost:8761/eureka/
-# end
