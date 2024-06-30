@@ -19,8 +19,13 @@ spring:
     #   ddl-auto: update
     show-sql: true   
   cloud:
+    function:
+      definition: updateCommunication
     stream:
       bindings:
+        updateCommunication-in-0:
+          destination: communication-sent
+          group: grade-service
         sendCommunication-out-0:
           # "send-communication" is exchange name
           destination: send-communication    
