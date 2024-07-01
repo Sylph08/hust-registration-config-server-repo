@@ -24,6 +24,10 @@ spring:
       definition: updateCommunication
     stream:
       bindings:
+        input:
+          binder: kafka
+        output:
+          binder: kafka
         updateCommunication-in-0:
           destination: communication-sent
           group: grade-service
