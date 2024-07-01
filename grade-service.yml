@@ -21,6 +21,7 @@ spring:
     show-sql: true   
   cloud:
     bus:
+      destination: springCloudBus
       binder: rabbit
     function:
       definition: updateCommunication
