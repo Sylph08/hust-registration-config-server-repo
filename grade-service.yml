@@ -83,4 +83,4 @@ logging:
     level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"        
       
 app-configs:
-  version: 2.1
+  version: 0.1
