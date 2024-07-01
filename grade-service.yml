@@ -20,17 +20,20 @@ spring:
     #   ddl-auto: update
     show-sql: true   
   cloud:
+    bus:
+      binder: rabbit
     function:
       definition: updateCommunication
     stream:
-      defaultBinder: kafka
       bindings:
         updateCommunication-in-0:
           destination: communication-sent
           group: grade-service
+          binder: kafka
         sendCommunication-out-0:
           # "send-communication" is exchange name
-          destination: send-communication    
+          destination: send-communication   
+          binder: kafka
       kafka:
         binder:
           brokers:
