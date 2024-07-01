@@ -23,11 +23,8 @@ spring:
     function:
       definition: updateCommunication
     stream:
+      defaultBinder: kafka
       bindings:
-        input:
-          binder: kafka
-        output:
-          binder: kafka
         updateCommunication-in-0:
           destination: communication-sent
           group: grade-service
