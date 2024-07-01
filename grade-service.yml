@@ -26,7 +26,7 @@ spring:
     function:
       definition: updateCommunication
     stream:
-      defaultBinder: kafka
+      defaultBinder: rabbit
       bindings:
         updateCommunication-in-0:
           destination: communication-sent
