@@ -22,10 +22,12 @@ spring:
   cloud:
     bus:
       destination: springCloudBus
+      # specific binder is kafka or rabbit
       binder: rabbit
     function:
       definition: updateCommunication
     stream:
+      # with this config we can use rabbitmq for spring cloud bus and kafka for message broker
       defaultBinder: rabbit
       bindings:
         updateCommunication-in-0:
@@ -41,7 +43,6 @@ spring:
           brokers:
             - localhost:9092
           
-
 management:
   endpoints:
     web:
