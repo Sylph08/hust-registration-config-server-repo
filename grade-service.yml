@@ -33,15 +33,15 @@ spring:
         updateCommunication-in-0:
           destination: communication-sent
           group: grade-service
-          binder: kafka
+          # binder: kafka
         sendCommunication-out-0:
           # "send-communication" is exchange name
           destination: send-communication   
-          binder: kafka
-      kafka:
-        binder:
-          brokers:
-            - localhost:9092
+          # binder: kafka
+      # kafka:
+      #   binder:
+      #     brokers:
+      #       - localhost:9092
           
 management:
   endpoints:
