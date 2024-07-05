@@ -2,11 +2,11 @@ server:
   port: 8092
 
 spring:
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+  # rabbitmq:
+  #   host: "localhost"
+  #   port: 5672
+  #   username: "guest"
+  #   password: "guest"
   datasource:
     url: jdbc:postgresql://localhost:5432/hust_course_mngt
     username: postgres
@@ -18,6 +18,12 @@ spring:
     show-sql: true
     # hibernate:
     #   ddl-auto: update
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
 
 management:
   endpoints:
