@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 9000
 
 spring:
   # rabbitmq:
@@ -30,7 +30,7 @@ spring:
   #     connect-timeout: 2s
   #     host: localhost
   #     port: 6379
-  #     timeout: 1s
+  #     timeout: 1s 
   # resource server config
   security:
     oauth2:
@@ -40,6 +40,7 @@ spring:
           # Using this public certificate, resource server can validate if a given access token is really issued by the auth server
           # auth server use private certificate to generate and validate access token
           jwk-set-uri: "http://localhost:7080/realms/master/protocol/openid-connect/certs"
+      
 
 management:
   endpoints:
@@ -56,7 +57,7 @@ management:
   metrics:
     # group metric by name
     tags:
-      application: ${spring.application.name}
+      application: ${spring.application.name}      
 
 eureka:
   instance:
@@ -74,13 +75,13 @@ logging:
       hust:
         apigateway: DEBUG
   pattern:
-    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"        
 
 info:
   app:
     name: "api-gateway"
     description: "Hust API Gateway"
-    version: "1.0.0"
+    version: "1.0.0" 
 
 resilience4j.circuitbreaker:
   configs:
@@ -93,4 +94,4 @@ resilience4j.circuitbreaker:
       # if at least 50% of my requests are failed, the state change from close -> open state
       failureRateThreshold: 50
       # need to wait 10s to move from open state to the half open state and allow the partial traffic.
-      waitDurationInOpenState: 10000
+      waitDurationInOpenState: 10000    
