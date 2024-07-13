@@ -1,5 +1,5 @@
 server:
-  port: 8761
+  port: 9761
 
 eureka:
   instance:
@@ -36,4 +36,4 @@ management:
 
 logging:
   pattern:
-    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"      
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
