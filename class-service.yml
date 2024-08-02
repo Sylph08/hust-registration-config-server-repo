@@ -1,6 +1,156 @@
 build:
   version: 1.6
 
+spring:
+  # connect to spring cloud bus rabbitmq, after that call POST method http://localhost:8091/actuator/busrefresh 1 time and all the services config will be refreshed
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hust_class_mngt
+    username: postgres
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    #    hibernate:
+    #      ddl-auto: update
+    show-sql: true
+  # khoi tao DB bang viec chay file schema.sql moi khi run application
+  #  sql:
+  #    init:
+  #      mode: always
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
+
+  # mention tat ca cac profile duoc su dung trong project
+#  config:
+#    import: application_prod.yml
+#  khi do ta can them doan sau vao file properties cua prod
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+
+# refresh bang cach goi http://localhost:8091/actuator/refresh voi phuong thuc POST trong postman
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # enable liveless and readiness in /actuator/health endpoint to use in docker-compose file
+  # api gateway se dua vao health cua service de bat dau chay
+  health:
+    # /actuator/health/readiness
+    readiness-state:
+      enabled: true
+    # /actuator/health/liveness
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    # expose shutdown endpoint so that we can shut down the microserivce by POST: http://localhost:8091/actuator/shutdown
+    # trong qua trinh shutdown, service se duoc deregister khoi eureka server
+    shutdown:
+      enabled: true
+  # expose environment info endpoint
+  info:
+    env:
+      enabled: true
+  metrics:
+    # group metric by name
+    tags:
+      application: ${spring.application.name}
+
+endpoints:
+  shutdown:
+    enabled: true
+
+## eureka client
+eureka:
+  instance:
+    # behind the scenes, whenever other microservices are trying to connect with this microservice, the Eureka server is going to
+    # share the IP address details of this microservice so that other microservices can connect to this microservice
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# set 1 so thong tin duoc su dung trong eureka dashboard
+info:
+  app:
+    name: "class-service"
+    description: "Hust Class service"
+    version: "1.0.0"
+## end
+
+# enable the debugging logging for package com.hust.classservice, we need to enable to see the log of "logger.debug()"
+logging:
+  level:
+    com:
+      hust:
+        classservice: DEBUG
+    # disable Kafka log
+    org:
+      apache:
+        kafka: OFF
+  # open telemetry logging pattern
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+resilience4j.circuitbreaker:
+  configs:
+    # co the config cho cac circuitbreaker khac bang cach thay "default" bang ten cua chung
+    default:
+      # how many requests it has to initially monitor before it tries to change the status from close to open
+      slidingWindowSize: 10
+      # allow 2 request in half open status, Based upon how these two requests are processed, it can decide whether to go back to the open state or move to the closed state
+      permittedNumberOfCallsInHalfOpenState: 2
+      # if at least 50% of my requests are failed, the state change from close -> open state
+      failureRateThreshold: 50
+      # need to wait 10s to move from open state to the half open state and allow the partial traffic.
+      waitDurationInOpenState: 10000
+
+resilience4j.retry:
+  configs:
+    default:
+      maxRetryAttempts: 3
+      waitDuration: 500
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      # don't retry the request if the exception of type NullPointerException, instead of that perform directly Fallback function
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      # retryExceptions mean only retry for a set of specific exceptions and all the remaining exceptions automatically will be ignored, so that we don't need to mention retryExceptions
+      retryExceptions:
+        - java.util.concurrent.TimeoutException
+
+#resilience4j.ratelimiter:
+#  configs:
+#    # "default" mean config for all rate limiter in this project
+#    default:
+#      # the maximum time that a thread can wait for the new refresh period to arrive with the new quota
+#      # after 1s, if RateLimiter is not allowing the request, then simply it is not going to wait further and the fallback function is called
+#      timeoutDuration: 1000
+#      # for every five seconds, renewing the quota of request.
+#      limitRefreshPeriod: 5000
+#      # the quota of request
+#      limitForPeriod: 1
+
 app-configs:
   # {cipher} giup config server nhan biet rang day la 1 encrypted value va tien hanh decrypt no de gui gia tri cho class-service
   message: "{cipher}1c50c596a9016b28714d2e2c1eea2afa1ae29a80385c85e1baefe2bfa6000657b5cf530a8cc1b67bdb9e6c61261363c8"
