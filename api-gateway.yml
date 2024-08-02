@@ -39,7 +39,7 @@ spring:
           # define auth server url where resource server can download the certificates during the startup.
           # Using this public certificate, resource server can validate if a given access token is really issued by the auth server
           # auth server use private certificate to generate and validate access token
-          jwk-set-uri: "http://localhost:7080/realms/master/protocol/openid-connect/certs"
+          jwk-set-uri: "http://localhost/realms/master/protocol/openid-connect/certs"
       
 
 management:
@@ -74,6 +74,9 @@ logging:
     com:
       hust:
         apigateway: DEBUG
+    org:
+      apache:
+        kafka: OFF        
   pattern:
     level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"        
 
