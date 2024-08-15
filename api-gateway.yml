@@ -57,8 +57,7 @@ management:
     health:
       probes:
         enabled: true
-  # enable releated endpoints of api gateway
-  endpoint:
+    # enable releated endpoints of api gateway
     gateway:
       enabled: true
   info:
