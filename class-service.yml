@@ -156,7 +156,7 @@ app-configs:
   message: "{cipher}1c50c596a9016b28714d2e2c1eea2afa1ae29a80385c85e1baefe2bfa6000657b5cf530a8cc1b67bdb9e6c61261363c8"
   contactInfos:
     name: "Trong"
-    studentCode: 12345
+    studentCode: 123456
   description:
     - Class serives
     - 2024
