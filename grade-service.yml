@@ -18,31 +18,39 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     # hibernate:
     #   ddl-auto: update
-    show-sql: true   
+    show-sql: true
   cloud:
     bus:
       destination: springCloudBus
       # specific binder is kafka or rabbit
       binder: kafka
     function:
-      definition: updateCommunication
+      definition: updateCommunication; getResultOfUpdatingAttendantAmount
     stream:
       # with this config we can use rabbitmq for spring cloud bus and kafka for message broker
       defaultBinder: kafka
       bindings:
         updateCommunication-in-0:
           destination: communication-sent
-          group: grade-service
+          group: ${spring.application.name}
           binder: kafka
         sendCommunication-out-0:
           # "send-communication" is exchange name
-          destination: send-communication   
+          destination: send-communication
+          binder: kafka
+        sendAttendantAmount-out-0:
+          destination: receive-update-attendant-amount-request
+          group: ${spring.application.name}
+          binder: kafka
+        getResultOfUpdatingAttendantAmount-in-0:
+          destination: response-update-attendant-amount-result
+          group: ${spring.application.name}
           binder: kafka
       kafka:
         binder:
           brokers:
             - localhost:9092
-          
+
 management:
   endpoints:
     web:
@@ -61,15 +69,15 @@ management:
       enabled: true
   info:
     env:
-      enabled: true    
+      enabled: true
   metrics:
     # group metric by name
     tags:
-      application: ${spring.application.name}      
+      application: ${spring.application.name}
 
 endpoints:
   shutdown:
-    enabled: true   
+    enabled: true
 
 eureka:
   instance:
@@ -87,9 +95,9 @@ logging:
         gradeservice: DEBUG
     org:
       apache:
-        kafka: OFF        
+        kafka: OFF
   pattern:
-    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"        
-      
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
 app-configs:
   version: 1.1

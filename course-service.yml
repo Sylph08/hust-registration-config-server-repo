@@ -19,7 +19,19 @@ spring:
     # hibernate:
     #   ddl-auto: update
   cloud:
+    function:
+      definition: updateAttendantAmountFunction
     stream:
+      defaultBinder: kafka
+      bindings:
+        updateAttendantAmountFunction-in-0:
+          destination: receive-update-attendant-amount-request
+          group: ${spring.application.name}
+          binder: kafka
+        updateAttendantAmountFunction-out-0:
+          destination: response-update-attendant-amount-result
+          group: ${spring.application.name}
+          binder: kafka
       kafka:
         binder:
           brokers:
@@ -47,7 +59,7 @@ management:
   metrics:
     # group metric by name
     tags:
-      application: ${spring.application.name}      
+      application: ${spring.application.name}
 
 endpoints:
   shutdown:
@@ -60,7 +72,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/    
+      defaultZone: http://localhost:8761/eureka/
 
 logging:
   level:
@@ -69,9 +81,9 @@ logging:
         courseservice: DEBUG
     org:
       apache:
-        kafka: OFF        
+        kafka: OFF
   pattern:
-    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"        
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 app-configs:
   version: 12.1
