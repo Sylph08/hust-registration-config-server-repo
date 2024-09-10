@@ -1,13 +1,16 @@
+server:
+  port: 8091
+
 build:
   version: 2.7
 
 spring:
   # connect to spring cloud bus rabbitmq, after that call POST method http://localhost:8091/actuator/busrefresh 1 time and all the services config will be refreshed
-#  rabbitmq:
-#    host: "localhost"
-#    port: 5672
-#    username: "guest"
-#    password: "guest"
+  #  rabbitmq:
+  #    host: "localhost"
+  #    port: 5672
+  #    username: "guest"
+  #    password: "guest"
   datasource:
     url: jdbc:postgresql://localhost:5432/hust_class_mngt
     username: postgres
