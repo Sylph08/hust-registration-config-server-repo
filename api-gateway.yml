@@ -106,4 +106,4 @@ resilience4j.circuitbreaker:
       # if at least 50% of my requests are failed, the state change from close -> open state
       failureRateThreshold: 50
       # need to wait 10s to move from open state to the half open state and allow the partial traffic.
-      waitDurationInOpenState: 4000
+      waitDurationInOpenState: 7000
