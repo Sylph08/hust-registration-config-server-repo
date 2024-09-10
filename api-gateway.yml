@@ -18,7 +18,7 @@ spring:
           lowerCaseServiceId: true
       httpclient:
         connect-timeout: 5000
-        response-timeout: 200s
+        response-timeout: 8s
     stream:
       kafka:
         binder:
