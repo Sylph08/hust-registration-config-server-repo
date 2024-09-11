@@ -112,7 +112,7 @@ resilience4j.circuitbreaker:
 resilience4j.timelimiter:
   configs:
     default:
-      timeoutDuration: 3s # Thời gian cho phép thực thi request là 3 giây
+      timeoutDuration: 600s # Thời gian cho phép thực thi request là 3 giây
     # cai dat gia tri cu the cho tung route
 #  instances:
 #    classServiceCircuitBreaker:
