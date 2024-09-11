@@ -17,8 +17,9 @@ spring:
           # enable lower case
           lowerCaseServiceId: true
       httpclient:
+      # chi ap dung voi nhung route khong co circuitBreaker, neu co circuitBreaker thi timeout cua circuitBreaker se duoc chon
         connect-timeout: 5000
-        response-timeout: 5000ms
+        response-timeout: 600000ms
     stream:
       kafka:
         binder:
@@ -112,7 +113,8 @@ resilience4j.timelimiter:
   configs:
     default:
       timeoutDuration: 3s # Thời gian cho phép thực thi request là 3 giây
-  instances:
-    classServiceCircuitBreaker:
-      base-config: default
-      timeoutDuration: 3s
+    # cai dat gia tri cu the cho tung route
+#  instances:
+#    classServiceCircuitBreaker:
+#      base-config: default
+#      timeoutDuration: 3s
