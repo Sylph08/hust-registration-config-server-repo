@@ -107,3 +107,12 @@ resilience4j.circuitbreaker:
       failureRateThreshold: 50
       # need to wait 10s to move from open state to the half open state and allow the partial traffic.
       waitDurationInOpenState: 15000
+
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeoutDuration: 3s # Thời gian cho phép thực thi request là 3 giây
+  instances:
+    classServiceCircuitBreaker:
+      base-config: default
+      timeoutDuration: 3s
