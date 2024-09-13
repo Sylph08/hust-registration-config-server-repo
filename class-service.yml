@@ -131,7 +131,7 @@ resilience4j.circuitbreaker:
 resilience4j.timelimiter:
   configs:
     default:
-      timeoutDuration: 600s      
+      timeoutDuration: 10s      
 
 resilience4j.retry:
   configs:
