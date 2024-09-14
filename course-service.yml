@@ -19,6 +19,9 @@ spring:
     # hibernate:
     #   ddl-auto: update
   cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
     function:
       definition: updateAttendantAmountFunction
     stream:
@@ -84,6 +87,19 @@ logging:
         kafka: OFF
   pattern:
     level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 7
+      permittedNumberOfCallsInHalfOpenState: 3
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeoutDuration: 5s
 
 app-configs:
   version: 12.1
