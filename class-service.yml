@@ -120,9 +120,9 @@ resilience4j.circuitbreaker:
     # co the config cho cac circuitbreaker khac bang cach thay "default" bang ten cua chung
     default:
       # how many requests it has to initially monitor before it tries to change the status from close to open
-      slidingWindowSize: 10
+      slidingWindowSize: 7
       # allow 2 request in half open status, Based upon how these two requests are processed, it can decide whether to go back to the open state or move to the closed state
-      permittedNumberOfCallsInHalfOpenState: 2
+      permittedNumberOfCallsInHalfOpenState: 3
       # if at least 50% of my requests are failed, the state change from close -> open state
       failureRateThreshold: 50
       # need to wait 10s to move from open state to the half open state and allow the partial traffic.
