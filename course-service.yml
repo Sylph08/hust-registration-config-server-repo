@@ -99,7 +99,7 @@ resilience4j.circuitbreaker:
 resilience4j.timelimiter:
   configs:
     default:
-      timeoutDuration: 5s
+      timeoutDuration: 25s
 
 app-configs:
   version: 12.1
