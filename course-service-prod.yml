@@ -1,2 +1,16 @@
-build:
-  version: 10.0
+spring:
+  jpa:
+    show-sql: true
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 7
+      permittedNumberOfCallsInHalfOpenState: 3
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeoutDuration: 25s

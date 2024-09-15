@@ -1,2 +1,3 @@
-app-configs:
-  version: 2.0   
+spring:
+  jpa:
+    show-sql: true

@@ -1,11 +1,16 @@
-build:
-  version: 1.0p
+spring:
+  jpa:
+    show-sql: true
 
-app-configs:
-  message: This is Hust class service on PRD
-  contactInfos:
-    name: TrongVX123
-    studentCode: 20222052M
-  description:
-    - Class serives
-    - 2024
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 7
+      permittedNumberOfCallsInHalfOpenState: 3
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeoutDuration: 25s
