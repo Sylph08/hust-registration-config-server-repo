@@ -28,7 +28,7 @@ spring:
       # specific binder is kafka or rabbit
       binder: kafka
     function:
-      definition: updateCommunication; getResultOfUpdatingAttendantAmount
+      definition: getResultOfUpdatingAttendantAmount
     stream:
       # with this config we can use rabbitmq for spring cloud bus and kafka for message broker
       defaultBinder: kafka
