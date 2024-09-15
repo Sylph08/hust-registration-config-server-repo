@@ -133,32 +133,6 @@ resilience4j.timelimiter:
     default:
       timeoutDuration: 25s
 
-resilience4j.retry:
-  configs:
-    default:
-      maxRetryAttempts: 3
-      waitDuration: 500
-      enableExponentialBackoff: true
-      exponentialBackoffMultiplier: 2
-      # don't retry the request if the exception of type NullPointerException, instead of that perform directly Fallback function
-      ignoreExceptions:
-        - java.lang.NullPointerException
-      # retryExceptions mean only retry for a set of specific exceptions and all the remaining exceptions automatically will be ignored, so that we don't need to mention retryExceptions
-      retryExceptions:
-        - java.util.concurrent.TimeoutException
-
-#resilience4j.ratelimiter:
-#  configs:
-#    # "default" mean config for all rate limiter in this project
-#    default:
-#      # the maximum time that a thread can wait for the new refresh period to arrive with the new quota
-#      # after 1s, if RateLimiter is not allowing the request, then simply it is not going to wait further and the fallback function is called
-#      timeoutDuration: 1000
-#      # for every five seconds, renewing the quota of request.
-#      limitRefreshPeriod: 5000
-#      # the quota of request
-#      limitForPeriod: 1
-
 app-configs:
   # {cipher} giup config server nhan biet rang day la 1 encrypted value va tien hanh decrypt no de gui gia tri cho class-service
   message: "{cipher}1c50c596a9016b28714d2e2c1eea2afa1ae29a80385c85e1baefe2bfa6000657b5cf530a8cc1b67bdb9e6c61261363c8"

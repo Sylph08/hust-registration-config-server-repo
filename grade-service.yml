@@ -33,14 +33,6 @@ spring:
       # with this config we can use rabbitmq for spring cloud bus and kafka for message broker
       defaultBinder: kafka
       bindings:
-        updateCommunication-in-0:
-          destination: communication-sent
-          group: ${spring.application.name}
-          binder: kafka
-        sendCommunication-out-0:
-          # "send-communication" is exchange name
-          destination: send-communication
-          binder: kafka
         sendAttendantAmount-out-0:
           destination: receive-update-attendant-amount-request
           group: ${spring.application.name}
