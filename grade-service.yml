@@ -45,6 +45,9 @@ spring:
           destination: receive-update-attendant-amount-request
           group: ${spring.application.name}
           binder: kafka
+          producer:
+            partitionKeyExpression: payload.appInstanceId  # Dùng appInstanceId làm partition key
+            partitionCount: ${app-configs.instancesAmount}  # Số lượng partition của topic Kafka          
         getResultOfUpdatingAttendantAmount-in-0:
           destination: response-update-attendant-amount-result
           group: ${spring.application.name}
@@ -117,3 +120,4 @@ resilience4j.timelimiter:
 
 app-configs:
   version: 1.1
+  instancesAmount: 1
