@@ -33,7 +33,6 @@ spring:
           binder: kafka
         updateAttendantAmountFunction-out-0:
           destination: response-update-attendant-amount-result
-          group: ${spring.application.name}
           binder: kafka
       kafka:
         binder:
@@ -103,3 +102,4 @@ resilience4j.timelimiter:
 
 app-configs:
   version: 12.1
+  instancesAmount: 1
