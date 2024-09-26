@@ -33,11 +33,7 @@ spring:
           binder: kafka
         updateAttendantAmountFunction-out-0:
           destination: response-update-attendant-amount-result
-          group: ${spring.application.name}
           binder: kafka
-          producer:
-            partitionKeyExpression: payload.appInstanceId # Dùng appInstanceId làm partition key
-            partitionCount: ${app-configs.instancesAmount} # Số lượng partition của topic Kafka
       kafka:
         binder:
           brokers:

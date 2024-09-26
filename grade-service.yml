@@ -43,14 +43,10 @@ spring:
           binder: kafka
         sendAttendantAmount-out-0:
           destination: receive-update-attendant-amount-request
-          group: ${spring.application.name}
           binder: kafka
         getResultOfUpdatingAttendantAmount-in-0:
           destination: response-update-attendant-amount-result
-          group: ${spring.application.name}
           binder: kafka
-          consumer:
-            partitionSelectorExpression: payload.appInstanceId
       kafka:
         binder:
           brokers:
