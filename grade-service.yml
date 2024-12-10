@@ -23,22 +23,7 @@ spring:
     openfeign:
       circuitbreaker:
         enabled: true
-    bus:
-      destination: springCloudBus
-      # specific binder is kafka or rabbit
-      binder: kafka
-    function:
-      definition: getResultOfUpdatingAttendantAmount
     stream:
-      # with this config we can use rabbitmq for spring cloud bus and kafka for message broker
-      defaultBinder: kafka
-      bindings:
-        sendAttendantAmount-out-0:
-          destination: receive-update-attendant-amount-request
-          binder: kafka
-        getResultOfUpdatingAttendantAmount-in-0:
-          destination: response-update-attendant-amount-result
-          binder: kafka
       kafka:
         binder:
           brokers:

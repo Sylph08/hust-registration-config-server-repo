@@ -22,18 +22,7 @@ spring:
     openfeign:
       circuitbreaker:
         enabled: true
-    function:
-      definition: updateAttendantAmountFunction
     stream:
-      defaultBinder: kafka
-      bindings:
-        updateAttendantAmountFunction-in-0:
-          destination: receive-update-attendant-amount-request
-          group: ${spring.application.name}
-          binder: kafka
-        updateAttendantAmountFunction-out-0:
-          destination: response-update-attendant-amount-result
-          binder: kafka
       kafka:
         binder:
           brokers:
