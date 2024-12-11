@@ -22,6 +22,7 @@ spring:
     #    hibernate:
     #      ddl-auto: update
     show-sql: true
+    open-in-view: false
   # khoi tao DB bang viec chay file schema.sql moi khi run application
   #  sql:
   #    init:
