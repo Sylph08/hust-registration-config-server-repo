@@ -16,10 +16,10 @@ spring:
           enabled: false
           # enable lower case
           lowerCaseServiceId: true
-      httpclient:
       # chi ap dung voi nhung route khong co circuitBreaker, neu co circuitBreaker thi timeout cua circuitBreaker se duoc chon
-        connect-timeout: 5000
-        response-timeout: 600000ms
+      httpclient:
+        connect-timeout: 1000000
+        response-timeout: 1000s
     stream:
       kafka:
         binder:
