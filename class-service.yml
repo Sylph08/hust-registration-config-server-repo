@@ -2,7 +2,7 @@ server:
   port: 8091
 
 build:
-  version: 2.8
+  version: 2.6
 
 spring:
   # connect to spring cloud bus rabbitmq, after that call POST method http://localhost:8091/actuator/busrefresh 1 time and all the services config will be refreshed
@@ -139,7 +139,7 @@ app-configs:
   message: "{cipher}1c50c596a9016b28714d2e2c1eea2afa1ae29a80385c85e1baefe2bfa6000657b5cf530a8cc1b67bdb9e6c61261363c8"
   contactInfos:
     name: "Trong"
-    studentCode: 111111
+    studentCode: 111112
   description:
     - Class serives
     - 2024
