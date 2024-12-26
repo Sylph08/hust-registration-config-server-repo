@@ -2,7 +2,7 @@ server:
   port: 8091
 
 build:
-  version: 2.7
+  version: 2.9
 
 spring:
   # connect to spring cloud bus rabbitmq, after that call POST method http://localhost:8091/actuator/busrefresh 1 time and all the services config will be refreshed
